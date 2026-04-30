@@ -1,120 +1,101 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Settings, Trophy, Cloud, User, ArrowRight, FileText } from 'lucide-react';
+import { Settings, Trophy, Cloud, User, ArrowRight } from 'lucide-react';
 import { useGameStore } from '../../store/useGameStore';
 import { ASSETS } from '../../config/assets';
 import './IntroScreen.css';
+
+const quickActions = [
+  { label: 'Logros', icon: Trophy },
+  { label: 'Guardado en la nube', icon: Cloud },
+  { label: 'Perfil', icon: User },
+];
 
 export const IntroScreen: React.FC = () => {
   const { setScreen } = useGameStore();
 
   return (
-    <motion.div 
+    <motion.div
       className="intro-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.45 }}
     >
-      {/* Background Image */}
-      <div 
-        className="intro-bg" 
-        style={{ backgroundImage: `url(${ASSETS.backgrounds.introBg})` }}
-      />
-      
-      {/* Top Left Options */}
-      <div className="top-left-actions">
-        <button className="icon-btn" aria-label="Opciones">
-          <Settings size={24} />
-        </button>
-      </div>
+      <section className="intro-stage" aria-label="Pantalla de inicio">
+        <div
+          className="intro-bg"
+          style={{ backgroundImage: `url(${ASSETS.backgrounds.introBg})` }}
+        />
 
-      {/* Top Right Actions */}
-      <div className="top-right-actions">
-        <button className="icon-btn" aria-label="Logros">
-          <Trophy size={24} />
-        </button>
-        <button className="icon-btn" aria-label="Nube">
-          <Cloud size={24} />
-        </button>
-        <button className="icon-btn" aria-label="Usuario">
-          <User size={24} />
-        </button>
-      </div>
+        <motion.img
+          src={ASSETS.characters.aya.standingFolder}
+          alt="Aya"
+          className="character-img"
+          initial={{ x: 36, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.18, duration: 0.65 }}
+        />
 
-      {/* Main Content Layout */}
-      <div className="intro-content">
-        
-        {/* Left Column: Typography & Menu */}
-        <div className="left-column">
-          <motion.div 
+        <div className="top-left-actions">
+          <button className="icon-btn" aria-label="Opciones">
+            <Settings size={24} />
+          </button>
+        </div>
+
+        <div className="top-right-actions" aria-label="Accesos rápidos">
+          {quickActions.map(({ label, icon: Icon }) => (
+            <button className="icon-btn" aria-label={label} key={label}>
+              <Icon size={24} />
+            </button>
+          ))}
+        </div>
+
+        <div className="intro-content">
+          <motion.div
             className="title-section"
-            initial={{ x: -50, opacity: 0 }}
+            initial={{ x: -36, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
+            transition={{ delay: 0.12, duration: 0.6 }}
           >
             <h1>FUTURO EN<br />CONSTRUCCIÓN</h1>
+            <span className="title-rule" aria-hidden="true" />
             <p>Cada decisión te acerca<br />a tu descubrimiento.</p>
           </motion.div>
 
-          <motion.div 
+          <motion.nav
             className="menu-section"
-            initial={{ x: -50, opacity: 0 }}
+            aria-label="Menú principal"
+            initial={{ x: -36, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            transition={{ delay: 0.24, duration: 0.6 }}
           >
-            <button 
+            <button
               className="menu-btn primary"
-              onClick={() => setScreen('level1')} // Or the next screen ID
+              onClick={() => setScreen('level1')}
             >
-              NUEVA PARTIDA
-              <ArrowRight size={20} className="arrow-icon" />
+              <span>NUEVA PARTIDA</span>
+              <ArrowRight size={22} aria-hidden="true" />
             </button>
             <button className="menu-btn secondary">CARGAR PARTIDA</button>
             <button className="menu-btn secondary">OPCIONES</button>
             <button className="menu-btn secondary">CRÉDITOS</button>
-          </motion.div>
+          </motion.nav>
         </div>
 
-        {/* Right Column: Character */}
-        <div className="right-column">
-          <motion.img 
-            src={ASSETS.characters.aya.standingFolder} 
-            alt="Aya" 
-            className="character-img"
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          />
-        </div>
-      </div>
-
-      {/* Bottom Bar Layout */}
-      <motion.div 
-        className="bottom-bar"
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.8 }}
-      >
-        <div className="news-widget">
-          <div className="news-icon-wrapper">
-            <FileText size={20} />
-          </div>
-          <div className="news-text">
-            <span className="news-label">NUEVO CONTENIDO DISPONIBLE</span>
-            <span className="news-title">Capítulo 2: El inicio de tu investigación</span>
-          </div>
-          <ArrowRight size={16} className="news-arrow" />
-        </div>
-
-        <div className="quote-widget">
-          <p>
-            <span className="quote-mark">"</span>
-            La curiosidad hoy,<br/><strong>el legado mañana.</strong>
-          </p>
-        </div>
-      </motion.div>
-
+        <motion.figure
+          className="quote-widget"
+          initial={{ y: 28, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.42, duration: 0.55 }}
+        >
+          <span className="quote-mark" aria-hidden="true">“</span>
+          <blockquote>
+            La curiosidad hoy,<br />
+            <strong>el legado mañana.</strong>
+          </blockquote>
+        </motion.figure>
+      </section>
     </motion.div>
   );
 };
