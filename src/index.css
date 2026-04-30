@@ -1,0 +1,43 @@
+:root {
+  /* Design System Colors based on "Futuro en Construcción" */
+  --color-bg-primary: #F7F5F0;     /* Light cream background */
+  --color-bg-secondary: #EBE6DF;   /* Slightly darker cream */
+  --color-text-primary: #1A1A1A;   /* Near black for headings */
+  --color-text-secondary: #4A4A4A; /* Dark gray for body */
+  --color-primary-dark: #2A2A30;   /* Charcoal for buttons */
+  --color-accent: #D9C5B2;         /* Warm/Gold accent */
+  --color-button-hover: #404046;   /* Lighter charcoal for hover */
+
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
