@@ -1,14 +1,40 @@
 :root {
-  /* Design System Colors based on "Futuro en Construcción" */
-  --color-bg-primary: #F7F5F0;     /* Light cream background */
-  --color-bg-secondary: #EBE6DF;   /* Slightly darker cream */
-  --color-text-primary: #1A1A1A;   /* Near black for headings */
-  --color-text-secondary: #4A4A4A; /* Dark gray for body */
-  --color-primary-dark: #2A2A30;   /* Charcoal for buttons */
-  --color-accent: #D9C5B2;         /* Warm/Gold accent */
-  --color-button-hover: #404046;   /* Lighter charcoal for hover */
+  /* ==========================================================================
+   * Color tokens
+   * ========================================================================== */
+  --color-bg-primary: #f7f5f0;       /* Crema claro — fondo principal */
+  --color-bg-secondary: #ebe6df;     /* Crema oscuro */
+  --color-text-primary: #1a1a1a;     /* Casi negro — títulos y body */
+  --color-text-secondary: #4a4a4a;   /* Gris oscuro — descripciones */
+  --color-primary-dark: #2a2a30;     /* Charcoal — botones primarios */
+  --color-button-hover: #404046;     /* Charcoal claro — hover */
+  --color-accent: #d9c5b2;           /* Crema cálido — decorativo, NO el dorado */
+  --color-gold: #d6aa4d;             /* Dorado real del UI (rule, highlights, badge TÚ) */
+  --color-gold-soft: #e8c989;        /* Dorado claro — hover/glow */
+  --color-gold-deep: #b8923a;        /* Dorado oscuro — active/pressed */
 
-  /* Typography */
+  /* ==========================================================================
+   * Radii
+   * ========================================================================== */
+  --radius-card: 18px;
+  --radius-pill: 999px;
+
+  /* ==========================================================================
+   * Shadows
+   * ========================================================================== */
+  --shadow-card: 0 14px 32px rgba(28, 24, 22, 0.12);
+  --shadow-card-strong: 0 18px 45px rgba(28, 24, 22, 0.16);
+
+  /* ==========================================================================
+   * Animation
+   * ========================================================================== */
+  --duration-fast: 180ms;
+  --duration-base: 450ms;
+  --easing-standard: cubic-bezier(.2, .7, .3, 1);
+
+  /* ==========================================================================
+   * Typography
+   * ========================================================================== */
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
 }
@@ -23,7 +49,6 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
   min-height: 100vh;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);

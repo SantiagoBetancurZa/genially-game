@@ -2,6 +2,8 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '../store/useGameStore';
 import { IntroScreen } from './screens/IntroScreen';
+import { LevelIntroScreen } from './screens/LevelIntroScreen';
+import { Chapter1Screen } from './screens/Chapter1Screen';
 
 export const ScreenManager: React.FC = () => {
   const currentScreen = useGameStore((state) => state.currentScreen);
@@ -10,6 +12,10 @@ export const ScreenManager: React.FC = () => {
     switch (currentScreen) {
       case 'intro':
         return <IntroScreen />;
+      case 'levelIntro':
+        return <LevelIntroScreen />;
+      case 'chapter1':
+        return <Chapter1Screen />;
       default:
         return <div className="screen-placeholder">Escena No Encontrada</div>;
     }

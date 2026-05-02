@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# Source/raw asset files (PSD, AI, full-res PNGs). Do not commit;
+# what the browser loads lives in public/assets/. See docs/asset-pipeline.md.
+raw_assets/
+*.psd
+*.ai
+*.fig
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,3 +29,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.vercel

@@ -1,0 +1,113 @@
+.chapter1-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: saturate(0.9) contrast(0.93) brightness(1.03);
+}
+
+.chapter1-content {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(88%, 640px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(20px, 2.2vw, 28px);
+}
+
+.chapter1-content .title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chapter1-content .title-block h1,
+.chapter1-content .title-block .title-block__subtitle {
+  text-align: center;
+}
+
+.chapter1-content .title-block__rule {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chapter1-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(10px, 1vw, 14px);
+  justify-content: center;
+}
+
+.chapter1-actions__btn {
+  min-width: 200px;
+  height: clamp(44px, 3.6vw, 50px);
+  padding: 0 clamp(22px, 2vw, 28px);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: clamp(0.86rem, 1.1vw, 0.98rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--easing-standard),
+    border-color var(--duration-fast) var(--easing-standard),
+    transform var(--duration-fast) var(--easing-standard);
+}
+
+.chapter1-actions__btn--primary {
+  border: 1px solid rgba(20, 20, 23, 0.95);
+  background: linear-gradient(135deg, #1f2026, var(--color-primary-dark));
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(28, 28, 34, 0.14);
+}
+
+.chapter1-actions__btn--primary:hover {
+  background: var(--color-button-hover);
+  transform: translateY(-2px);
+}
+
+.chapter1-actions__btn--ghost {
+  border: 1px solid rgba(28, 26, 24, 0.22);
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--color-text-primary);
+  backdrop-filter: blur(8px);
+}
+
+.chapter1-actions__btn--ghost:hover {
+  border-color: rgba(28, 26, 24, 0.36);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.chapter1-actions__btn:focus-visible {
+  outline: 3px solid rgba(214, 172, 80, 0.55);
+  outline-offset: 3px;
+}
+
+.chapter1-actions__btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+  box-shadow: none;
+}
+
+.chapter1-actions__btn--primary:disabled:hover {
+  background: linear-gradient(135deg, #1f2026, var(--color-primary-dark));
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter1-actions__btn {
+    transition: none;
+  }
+
+  .chapter1-actions__btn--primary:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,45 @@
+.top-bar {
+  position: absolute;
+  z-index: 4;
+  top: 4.2%;
+  display: flex;
+  gap: clamp(10px, 1.05vw, 16px);
+}
+
+.top-bar--left  { left: 4.1%; }
+.top-bar--right { right: 4.1%; }
+
+.top-bar__btn {
+  width: clamp(42px, 3.8vw, 52px);
+  height: clamp(42px, 3.8vw, 52px);
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(28, 26, 24, 0.13);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(29, 25, 22, 0.05);
+  backdrop-filter: blur(8px);
+  transition:
+    background var(--duration-fast) var(--easing-standard),
+    box-shadow var(--duration-fast) var(--easing-standard),
+    transform var(--duration-fast) var(--easing-standard);
+}
+
+.top-bar__btn:hover {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 12px 24px rgba(29, 25, 22, 0.1);
+  transform: translateY(-2px);
+}
+
+.top-bar__btn:focus-visible {
+  outline: 3px solid rgba(214, 172, 80, 0.58);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top-bar__btn {
+    transition: none;
+  }
+}
