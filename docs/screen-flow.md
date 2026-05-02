@@ -7,15 +7,17 @@ Las pantallas del juego se identifican por un ID en el union `Screen` (`src/type
 ```mermaid
 graph LR
   intro[intro<br/>IntroScreen] -->|NUEVA PARTIDA| levelIntro[levelIntro<br/>LevelIntroScreen]
-  levelIntro -->|Continuar tras último diálogo| TBD[TBD]
+  levelIntro -->|Entrar al campus| chapter1[chapter1<br/>Chapter1Screen]
+  chapter1 -->|Menú principal| intro
 ```
 
 ## Tabla de pantallas
 
 | ID | Componente | Llega desde | Sale hacia |
 |---|---|---|---|
-| `intro` | `IntroScreen` | (estado inicial) | `levelIntro` (botón NUEVA PARTIDA) |
-| `levelIntro` | `LevelIntroScreen` | `intro` | TBD (al final de la secuencia de diálogos) |
+| `intro` | `IntroScreen` | (estado inicial), `chapter1` (Menú principal) | `levelIntro` (botón NUEVA PARTIDA) |
+| `levelIntro` | `LevelIntroScreen` | `intro` | `chapter1` (último diálogo: Entrar al campus) |
+| `chapter1` | `Chapter1Screen` | `levelIntro` | `intro` (Menú principal); gameplay TBD |
 
 ## Cómo añadir una pantalla
 

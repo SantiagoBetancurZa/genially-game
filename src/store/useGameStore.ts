@@ -1,9 +1,10 @@
 import { create } from 'zustand';
+import type { Screen } from '../types/game';
 
 type GameState = {
-  currentScreen: string;
+  currentScreen: Screen;
   coins: number;
-  setScreen: (screen: string) => void;
+  setScreen: (screen: Screen) => void;
   addCoin: () => void;
 };
 
