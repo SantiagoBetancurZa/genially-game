@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# Genially
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Juego narrativo de decisiones para escritorio. Construí tu camino paso a paso.
 
-Currently, two official plugins are available:
+**Stack:** React 19 · TypeScript · Vite · Zustand · Framer Motion · Lucide React
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Quick start
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev    # http://localhost:5173
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Construir para producción:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+npm run preview
 ```
+
+## Estructura
+
+```
+src/
+├── components/
+│   ├── layout/      # Stage, TopBar (primitivos compartidos)
+│   ├── ui/          # DialogBox, TitleBlock (UI reutilizable)
+│   └── screens/     # IntroScreen, LevelIntroScreen, …
+├── store/           # Zustand
+├── types/           # Tipos compartidos (Screen, DialogContent)
+├── config/          # Asset registry
+└── index.css        # Design tokens
+public/assets/       # Imágenes, audio (servidos al navegador)
+raw_assets/          # Fuentes sin optimizar (gitignored)
+docs/                # Design system, screen flow, asset pipeline
+scripts/             # Tooling (optimize-assets.mjs)
+```
+
+## Decisiones de diseño
+
+- **Solo escritorio.** El juego corre en un canvas 16:9 que escala con `clamp()`. No hay layout mobile.
+- **Sin router.** El estado de pantalla vive en Zustand (`useGameStore.currentScreen`). `ScreenManager` hace el switch.
+- **Diálogos como datos.** Cada diálogo es un `DialogContent` con `segments: DialogSegment[]`. La copy se podrá mover a JSON sin tocar componentes.
+- **CSS vanilla con tokens.** Sin Tailwind ni CSS-in-JS. Los tokens viven en `src/index.css`.
+
+## Contribuir
+
+Lee **[CLAUDE.md](./CLAUDE.md)** antes de tocar código. Todas las convenciones, anti-patterns y flujos viven ahí (aplica para humanos y para agentes).
+
+Documentación detallada:
+- [docs/design-system.md](./docs/design-system.md) — paleta, tipografía, componentes primitivos
+- [docs/screen-flow.md](./docs/screen-flow.md) — diagrama del flujo de pantallas
+- [docs/asset-pipeline.md](./docs/asset-pipeline.md) — cómo procesar imágenes nuevas
+
+Pull requests: el [template](./.github/PULL_REQUEST_TEMPLATE.md) tiene el checklist obligatorio.
+
+## Licencia
+
+Privado.
