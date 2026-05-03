@@ -8,6 +8,8 @@ Las pantallas del juego se identifican por un ID en el union `Screen` (`src/type
 graph LR
   intro[intro<br/>IntroScreen] -->|NUEVA PARTIDA| levelIntro[levelIntro<br/>LevelIntroScreen]
   levelIntro -->|Entrar al campus| chapter1[chapter1<br/>Chapter1Screen]
+  chapter1 -->|Seleccionar nivel| levelSelect[levelSelect<br/>LevelSelectScreen]
+  levelSelect -->|Volver al campus| chapter1
   chapter1 -->|Menú principal| intro
 ```
 
@@ -17,7 +19,8 @@ graph LR
 |---|---|---|---|
 | `intro` | `IntroScreen` | (estado inicial), `chapter1` (Menú principal) | `levelIntro` (botón NUEVA PARTIDA) |
 | `levelIntro` | `LevelIntroScreen` | `intro` | `chapter1` (último diálogo: Entrar al campus) |
-| `chapter1` | `Chapter1Screen` | `levelIntro` | `intro` (Menú principal); gameplay TBD |
+| `chapter1` | `Chapter1Screen` | `levelIntro`, `levelSelect` (Volver al campus) | `intro` (Menú principal); `levelSelect` (Seleccionar nivel) |
+| `levelSelect` | `LevelSelectScreen` | `chapter1` | `chapter1` (Volver al campus); gameplay por etapa TBD |
 
 ## Cómo añadir una pantalla
 

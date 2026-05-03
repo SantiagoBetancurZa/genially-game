@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Settings, Trophy, Cloud, User } from 'lucide-react';
 import { useGameStore } from '../../store/useGameStore';
 import { ASSETS } from '../../config/assets';
+import { RESEARCH_STAGE_LABELS } from '../../data/researchStages';
 import { Stage } from '../layout/Stage';
 import { TopBar, type TopBarAction } from '../layout/TopBar';
 import { TitleBlock } from '../ui/TitleBlock';
@@ -19,6 +20,7 @@ const rightActions: TopBarAction[] = [
 
 export function Chapter1Screen() {
   const setScreen = useGameStore((s) => s.setScreen);
+  const selectedResearchStage = useGameStore((s) => s.selectedResearchStage);
 
   return (
     <Stage ariaLabel="Capítulo 1 — El campus">
@@ -40,6 +42,11 @@ export function Chapter1Screen() {
             subtitle="Aquí comienza tu recorrido. Más escenas se sumarán a este capítulo."
             subtitleStyle="italic-small"
           />
+          {selectedResearchStage && (
+            <p className="chapter1-focus">
+              Etapa en foco: {RESEARCH_STAGE_LABELS[selectedResearchStage]}
+            </p>
+          )}
         </motion.div>
 
         <motion.nav
@@ -52,9 +59,9 @@ export function Chapter1Screen() {
           <button
             type="button"
             className="chapter1-actions__btn chapter1-actions__btn--primary"
-            disabled
+            onClick={() => setScreen('levelSelect')}
           >
-            Explorar (próximamente)
+            Seleccionar nivel
           </button>
           <button
             type="button"

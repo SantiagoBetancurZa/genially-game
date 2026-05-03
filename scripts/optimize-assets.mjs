@@ -30,6 +30,16 @@ const RAW_TO_PUBLIC = {
   // (personaje + fondo juntos), no fuentes para procesar — se ignoran a propósito.
   'Fondo Pantalla 1.png':   { dest: 'backgrounds/level-intro-bg.jpg',     kind: 'opaque' },
   'Aya en Pantalla1.png':   { dest: 'characters/aya/aya-level-intro.png', kind: 'transparent' },
+  'level-select-bg.png':    { dest: 'backgrounds/level-select-bg.jpg',    kind: 'opaque' },
+  'level-select-aya.png':   { dest: 'characters/aya/aya-level-select.png', kind: 'transparent' },
+  'level-thumb-01-definicion.png': { dest: 'level-select/thumb-01.png', kind: 'transparent' },
+  'level-thumb-02-literatura.png': { dest: 'level-select/thumb-02.png', kind: 'transparent' },
+  'level-thumb-03-objetivos.png': { dest: 'level-select/thumb-03.png', kind: 'transparent' },
+  'level-thumb-04-diseno.png': { dest: 'level-select/thumb-04.png', kind: 'transparent' },
+  'level-thumb-05-recoleccion.png': { dest: 'level-select/thumb-05.png', kind: 'transparent' },
+  'level-thumb-06-analisis.png': { dest: 'level-select/thumb-06.png', kind: 'transparent' },
+  'level-thumb-07-interpretacion.png': { dest: 'level-select/thumb-07.png', kind: 'transparent' },
+  'level-thumb-08-comunicacion.png': { dest: 'level-select/thumb-08.png', kind: 'transparent' },
 };
 
 const MAX_WIDTH = 1920;

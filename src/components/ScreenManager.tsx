@@ -4,6 +4,7 @@ import { useGameStore } from '../store/useGameStore';
 import { IntroScreen } from './screens/IntroScreen';
 import { LevelIntroScreen } from './screens/LevelIntroScreen';
 import { Chapter1Screen } from './screens/Chapter1Screen';
+import { LevelSelectScreen } from './screens/LevelSelectScreen';
 
 export const ScreenManager: React.FC = () => {
   const currentScreen = useGameStore((state) => state.currentScreen);
@@ -16,6 +17,8 @@ export const ScreenManager: React.FC = () => {
         return <LevelIntroScreen />;
       case 'chapter1':
         return <Chapter1Screen />;
+      case 'levelSelect':
+        return <LevelSelectScreen />;
       default:
         return <div className="screen-placeholder">Escena No Encontrada</div>;
     }
